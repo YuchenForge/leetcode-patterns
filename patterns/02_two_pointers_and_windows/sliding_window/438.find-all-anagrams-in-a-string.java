@@ -12,17 +12,17 @@ class Solution {
         List<Integer> result = new ArrayList<>();
         if (s.length() < p.length()) return result;
 
+        // map index to letters
         int[] pCount = new int[26];
         int[] sCount = new int[26];
 
-        // reference frequency and the initial window
         for (int i = 0; i < p.length(); i++) {
-            // lower case
+            // convert char to index, then increment frequency
             pCount[p.charAt(i) - 'a']++;
             sCount[s.charAt(i) - 'a']++;
         }
 
-        // Check the very first window
+        // Check the first window
         if (Arrays.equals(pCount, sCount)) {
             result.add(0);
         }
