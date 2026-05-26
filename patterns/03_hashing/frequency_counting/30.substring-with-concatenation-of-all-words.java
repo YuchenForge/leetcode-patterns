@@ -7,12 +7,12 @@
 import java.util.*;
 
 // @lc code=start
+@SuppressWarnings("unused")
 class Solution {
     public List<Integer> findSubstring(String s, String[] words) {
         HashMap<String, Integer> freq = new HashMap<>();
 
         int wordLength = words[0].length();
-        int concateLength = wordLength * words.length;
 
         // store words frequency
         for (String word: words) {
@@ -71,6 +71,7 @@ class Solution {
 
 // brute force solution (Time limit exceeded)
 
+@SuppressWarnings("unused")
 class BruteForceSolution {
     public List<Integer> findSubstring(String s, String[] words) {
         HashMap<String, Integer> freq = new HashMap<>();

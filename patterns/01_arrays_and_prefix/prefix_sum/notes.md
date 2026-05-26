@@ -51,16 +51,16 @@ class PrefixSum {
     Static array → prefix array
     Dynamic updates → Fenwick Tree / Segment Tree
 
-## Common Pitfalls
-- Forgetting base case: map.put(0, 1);
-- Off-by-one errors in l - 1
-- Using prefix array when sliding window is better (important distinction)
-- Integer overflow (use long if needed)
-- Confusing “count subarrays” vs “return subarray”
+## Complexity
+| Variant | Time | Space |
+|---------|------|-------|
+| Build prefix array | O(n) | O(n) |
+| Range sum query | O(1) | O(1) |
+| Subarray sum = k (hashmap) | O(n) | O(n) |
+| 2D prefix query | O(1) | O(mn) |
 
 ## Related Patterns
-- Sliding Window (when array is non-negative / shrinking window works)
-- HashMap frequency counting
-- Difference Array (range updates)
-- Kadane’s Algorithm (max subarray sum)
-- Binary prefix tricks (bitwise XOR problems)
+- Sliding Window — non-negative subarray sum with only positive nums
+- HashMap frequency / complement
+- Difference Array — many range adds
+- Kadane — max subarray sum, not count

@@ -60,10 +60,10 @@ class LFUCache {
         }
     }
 
-    private HashMap<Integer, DLinkedNode> cache = new HashMap<>();
-    private HashMap<Integer, DLinkedList> freqMap = new HashMap<>();
+    private final HashMap<Integer, DLinkedNode> cache = new HashMap<>();
+    private final HashMap<Integer, DLinkedList> freqMap = new HashMap<>();
 
-    private int capacity;
+    private final int capacity;
     private int minFreq;
 
     public LFUCache(int capacity) {

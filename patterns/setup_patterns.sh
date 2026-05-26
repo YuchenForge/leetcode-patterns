@@ -14,15 +14,17 @@ create_subtopic () {
 - 
 
 ## Template
-\`\`\`python
-# write template here
+\`\`\`java
+// write template here
 \`\`\`
 
 ## Common Variations
 - 
 
-## Common Pitfalls
-- 
+## Complexity
+| Variant | Time | Space |
+|---------|------|-------|
+| | | |
 
 ## Related Patterns
 - 
@@ -59,10 +61,9 @@ create_subtopic 06_heap top_k
 create_subtopic 06_heap kth_element
 create_subtopic 06_heap streaming_median
 
-# 07_linked_list
+# 07_linked_list (cycle detection → 02 fast_slow_pointers)
 create_subtopic 07_linked_list pointer_manipulation
 create_subtopic 07_linked_list reversal_patterns
-create_subtopic 07_linked_list cycle_detection
 
 # 08_trees
 create_subtopic 08_trees tree_traversal
@@ -110,8 +111,7 @@ create_subtopic 16_math_and_misc combinatorics
 create_subtopic 16_math_and_misc probability
 create_subtopic 16_math_and_misc bit_manipulation
 
-# 17_design
-create_subtopic 17_design lru_cache
+# 17_design (LRU/LFU → 03_hashing/key_design)
 create_subtopic 17_design data_structure_design
 create_subtopic 17_design system_design_basics
 

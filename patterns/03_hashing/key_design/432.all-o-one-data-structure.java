@@ -22,12 +22,12 @@ class AllOne {
 
     }
     // key -> current count
-    private HashMap<String, Integer> keyCount;
+    private final HashMap<String, Integer> keyCount;
 
     // count -> nodes
-    private HashMap<Integer, DLinkedNode> countMap;
+    private final HashMap<Integer, DLinkedNode> countMap;
 
-    private DLinkedNode head, tail;
+    private final DLinkedNode head, tail;
 
 
     public AllOne() {

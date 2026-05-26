@@ -1,5 +1,21 @@
 # Pattern: basic array tricks
 
+## When to Use
+- In-place rearrangement (rotate, move zeroes, dutch flag).
+- Index as hash key (first missing positive).
+- Insert interval into sorted list of intervals.
+
+## Core Idea
+- Prefer O(1) extra space: swap, read/write pointers, cyclic replacement.
+- Know Java array ops cold (see snippets below).
+
+## Complexity
+| Variant | Time | Space |
+|---------|------|-------|
+| In-place swap / write | O(n) | O(1) |
+| Rotate by reverse | O(n) | O(1) |
+| Cycle sort placement | O(n) | O(1) |
+
 # Array Initialization
 ```java
 int[] arr = new int[n];

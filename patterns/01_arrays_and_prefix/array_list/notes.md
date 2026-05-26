@@ -1,6 +1,18 @@
-# Pattern: basic array tricks
+# Pattern: array list (ArrayList)
 
-# Array Initialization
+## When to Use
+- Dynamic size, building results (backtracking, BFS adjacency).
+- Prefer `ArrayList` when adding unknown count of items; 
+- prefer `array[]` for DP/prefix/sliding window.
+
+## Complexity
+| Variant | Time | Space |
+|---------|------|-------|
+| get/set at index | O(1) | O(n) |
+| add end | O(1)* | O(n) |
+| insert/remove middle | O(n) | O(n) |
+
+# ArrayList Initialization
 ```java
 import java.util.*;
 

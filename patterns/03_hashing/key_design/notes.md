@@ -86,19 +86,13 @@ class MyHashMap {
 }
 ```
 
-## Common Pitfalls
-- Forgetting collisions when designing a custom hash table.
-- Using mutable keys (can break hashing behavior).
-- Assuming worst-case O(1) — hash maps are average O(1), worst-case O(n).
-- Duplicate handling mistakes:
-    - containsKey() vs contains()
-    - HashSet removes duplicates automatically.
+## Complexity
+| Variant | Time | Space |
+|---------|------|-------|
+| HashMap ops | O(1)* | O(n) |
+| LRU get/put | O(1) | O(capacity) |
+| LFU | O(1) | O(n) |
 
 ## Related Patterns
-- Frequency Counting
-- Bucket Sort
-- Sliding Window + HashMap
-- Prefix Sum + HashMap
-- Caching / Memoization
-- Graph (Adjacency Map)
-- Design Problems (LRU Cache, TimeMap, RandomizedSet)
+- Hashmap basics — simple map problems
+- Linked list — DLL pointers for LRU

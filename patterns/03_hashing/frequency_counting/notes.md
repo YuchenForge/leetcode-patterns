@@ -40,17 +40,14 @@ on the fly during a single pass to avoid iterating over the map at the end.
 Bucket Sort array where the index represents the frequency (e.g., Top K 
 Frequent Elements).
 
-## Common Pitfalls
-- Autoboxing Overhead: In Java, mapping Character to Integer creates 
-thousands of wrapper objects in tight loops. Use primitive arrays (int[]) 
-whenever constraints allow.
-- Modifying Map While Iterating: Trying to remove elements from a HashMap 
-while iterating over its keySet() throws a ConcurrentModificationException. 
-Use an iterator or collect keys to remove first.
+## Complexity
+| Variant | Time | Space |
+|---------|------|-------|
+| Build freq map | O(n) | O(k) |
+| Bucket by freq | O(n) | O(n) |
+| Window freq match | O(n) | O(1) alphabet |
 
 ## Related Patterns
-- Sliding Window: For managing a dynamic frequency counter of the current window.
-- Heap / Priority Queue: For extracting the top K frequent elements efficiently 
-in O(NlogK) time.
-- Bucket Sort: For extracting top K frequent elements in O(N) time when frequency 
-limits are known.
+- Hashmap basics — storage
+- Sliding window — dynamic window counts
+- Top K heap — `06_heap/top_k` for heap version of 347

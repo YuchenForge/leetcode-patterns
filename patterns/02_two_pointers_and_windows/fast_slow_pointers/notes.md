@@ -46,11 +46,3 @@ public boolean hasCycle(ListNode head) {
     Treating the squares of digits as a sequence; if the sequence 
     enters a loop that doesn't include 1, it’s not a happy number.
 
-## Common Pitfalls
-- Null Pointer Exceptions: Forgetting to check while (fast != null && fast.next != null)
-- Infinite Loops: Not moving the pointers inside the loop, or incorrect logic 
-- Start Position: Ensure both pointers start at the same location (usually head) 
-
-## Related Patterns
-- Linkeded List Reversal
-- Cycle Sort

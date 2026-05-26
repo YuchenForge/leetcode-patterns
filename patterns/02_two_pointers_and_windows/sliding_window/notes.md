@@ -94,17 +94,13 @@ public int fixedWindow(int[] nums, int k) {
 - Character problems (strings, anagrams, permutations)
 - Binary/boolean constraints (0/1 strings, validity checks)
 
-## Common Pitfalls
-- Using if instead of while when shrinking window
-- Forgetting to fully restore validity when shrinking
-- Not updating/removing state when moving left
-- Off-by-one errors in window size (right - left + 1)
-- Assuming sliding window works with NEGATIVE numbers in sum problems (often it doesn’t)
-- Mixing up “valid window” vs “best answer condition”
-- Forgetting to initialize state for first window (fixed-size case)
+## Complexity
+| Variant | Time | Space |
+|---------|------|-------|
+| Variable window scan | O(n) | O(k) map |
+| Fixed window size k | O(n) | O(1) |
 
 ## Related Patterns
-- Two Pointers
-- Prefix Sum
-- Hash Map Counting
-- Monotonic Queue (optimized sliding window)
+- Two pointers — same l/r machinery
+- Prefix sum + hash — when negatives break monotonic window
+- Monotonic deque — window min/max

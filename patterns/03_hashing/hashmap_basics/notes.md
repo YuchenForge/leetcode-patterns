@@ -13,7 +13,6 @@
 - Trade extra memory for faster access time.
 - Store useful information while iterating so future lookups become constant time.
 
-
 ## Template
 ```java
 HashMap<Integer, Integer> map = new HashMap<>();
@@ -112,9 +111,13 @@ public List<List<String>> groupTemplate(String[] strs) {
 - Group by Key: Many items share a transformed key
 (e.g., Group Anagrams)
 
+## Complexity
+| Variant | Time | Space |
+|---------|------|-------|
+| get/put/contains | O(1)* | O(n) |
+| One pass complement | O(n) | O(n) |
+
 ## Related Patterns
-- HashSet → existence checking only
-- Sliding Window → often combined with HashMap for frequency tracking
-- Prefix Sum → commonly paired with HashMap
-- Two Pointers → alternative when data is sorted
-- Heap / Priority Queue → useful for Top K frequency problems
+- Set usage — membership only
+- Frequency counting — counts not just presence
+- Prefix sum + map

@@ -17,10 +17,10 @@ class LRUCache {
         DLinkedNode next;
     }
 
-    private HashMap<Integer, DLinkedNode> cache = new HashMap<>();
+    private final HashMap<Integer, DLinkedNode> cache = new HashMap<>();
 
-    private int capacity;
-    private DLinkedNode head, tail;
+    private final int capacity;
+    private final DLinkedNode head, tail;
 
 
     public void remove(DLinkedNode node) {
