@@ -12,22 +12,33 @@
 
 ## Template
 ```java
-int[] dist = new int[n];
-Arrays.fill(dist, Integer.MAX_VALUE);
-dist[src] = 0;
-PriorityQueue<int[]> pq = new PriorityQueue<>((a,b)->a[1]-b[1]);
-pq.offer(new int[]{src, 0});
-while (!pq.isEmpty()) {
-    int[] cur = pq.poll();
-    int u = cur[0], d = cur[1];
-    if (d > dist[u]) continue;
-    for (int[] e : adj.get(u)) {
-        int v = e[0], w = e[1];
-        if (dist[u] + w < dist[v]) {
-            dist[v] = dist[u] + w;
-            pq.offer(new int[]{v, dist[v]});
+public int bellmanFord(int n, int[][] edges, int src, int dst) {
+    // Initialize distances
+    int[] distance = new int[n];
+    Arrays.fill(distance, Integer.MAX_VALUE);
+    distance[src] = 0;
+    
+    // Relax edges V-1 times
+    for (int i = 0; i < n - 1; i++) {
+        for (int[] edge : edges) {
+            int u = edge[0];
+            int v = edge[1];
+            int weight = edge[2];
+            
+            // Skip if source is unreachable
+            if (distance[u] == Integer.MAX_VALUE) {
+                continue;
+            }
+            
+            // Relax edge
+            if (distance[u] + weight < distance[v]) {
+                distance[v] = distance[u] + weight;
+            }
         }
     }
+    
+    // Return result
+    return distance[dst] == Integer.MAX_VALUE ? -1 : distance[dst];
 }
 ```
 

@@ -27,5 +27,8 @@ class Solution {
         return slow;
     }
 }
+
+// Time: O(n)
+// Space: O(1)
 // @lc code=end
 

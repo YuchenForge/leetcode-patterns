@@ -8,37 +8,51 @@
 - Maintain **increasing or decreasing** sequence of candidates; pop when current breaks order.
 
 ## Core Idea
+- Instead of checking every pair in O(n^2), the stack keeps only useful elements
 - Stack stores **indices** (or values) in monotonic order (usually increasing for “next greater”).
 - When `nums[i]` violates order, **pop** — each popped index gets answer from current `i`.
 - Each element pushed/popped once → **O(n)**.
 
 ## Template
 ```java
-// Monotonic Stack — Next Greater Element (to the right)
+// Monotonic Stack — Find Next Greater Element (to the right)
 // Decreasing stack: pop when nums[i] > top
 int[] res = new int[n];
 Arrays.fill(res, -1);
-Deque<Integer> st = new ArrayDeque<>();     // stores indices
+
+Deque<Integer> stack = new ArrayDeque<>();
+
 for (int i = 0; i < n; i++) {
-    while (!st.isEmpty() && nums[st.peek()] < nums[i]) {
-        res[st.pop()] = nums[i];            // i is the next greater for popped index
+
+    while (!stack.isEmpty() && nums[stack.peek()] < nums[i]) {
+
+        int idx = stack.pop();
+        res[idx] = nums[i];
     }
-    st.push(i);
+
+    stack.push(i);
 }
-// anything left in stack has no greater element → stays -1
 
 // Monotonic Stack — Next Smaller Element (to the right)
 // Increasing stack: pop when nums[i] < top
 while (!st.isEmpty() && nums[st.peek()] > nums[i]) {
-    res[st.pop()] = nums[i];
+    int idx = stack.pop();
+    res[idx] = nums[i];
 }
 
 // Monotonic Stack — Previous Smaller (left boundary)
 // Iterate left to right, increasing stack
 // After popping, stack.peek() is the nearest smaller to the left
-while (!st.isEmpty() && nums[st.peek()] >= nums[i]) st.pop();
-left[i] = st.isEmpty() ? -1 : st.peek();
-st.push(i);
+Deque<Integer> stack = new ArrayDeque<>();
+
+for (int i = 0; i < n; i++) {
+    while (!stack.isEmpty() && nums[stack.peek()] >= nums[i]) {
+        stack.pop();
+    }
+
+    left[i] = stack.isEmpty()? -1: stack.peek();
+    stack.push(i);
+}
 ```
 
 ```java
@@ -57,12 +71,14 @@ for (int i = 0; i <= heights.length; i++) {
 ```
 
 ## Common Variations
-| Variation | Monotonic order | Answer |
-|-----------|-----------------|--------|
-| Next greater to right | Decreasing stack | First warmer on right |
-| Next smaller to left | Increasing stack | Bound for rectangle width |
-| Circular array | Run 2n or duplicate logic | LC 503 |
-| Contribution counting | Pop and multiply counts | LC 907 |
+Use Monotonic Stack:
+- nearest greater
+- nearest smaller
+- first larger
+- first smaller
+- span
+- days until
+- rectangle boundary
 
 ## Complexity
 | Variant | Time | Space |

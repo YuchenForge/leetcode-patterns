@@ -14,12 +14,28 @@
 - For path (Unix): stack of directory names; `..` pops, `.` ignored.
 - **Mental model**: the stack is your scratchpad for "things I'm not done with yet." Push when you enter scope, pop when you leave or resolve. Non-empty at the end = something left open.
 
-## Gotchas
+## Important
 - Always check `stack.isEmpty()` before popping — a close bracket with an empty stack is invalid, not a match.
 - For path problems: `"//a"` splits into empty tokens — filter with `!part.isEmpty()`.
 - Prefer `ArrayDeque` over `Stack` in Java — `Stack` extends `Vector` and is synchronized unnecessarily.
 
 ## Templates
+
+### Syntax
+```java
+Deque<Integer> stack = new ArrayDeque<>();
+
+stack.push(5);        // push onto top
+
+stack.peek();         // look at top (no remove)
+stack.pop();          // remove top
+
+stack.isEmpty();      // true / false
+stack.size();         // number of elements
+
+stack.addLast();        // add to bottom
+stack.removeLast();     // remove from bottom
+```
 
 ### Validity / matching
 ```java

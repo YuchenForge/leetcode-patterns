@@ -48,5 +48,8 @@ class Solution {
         return output;
     }
 }
+
+// Time: O(n^2)
+// Space: O(1)
 // @lc code=end
 

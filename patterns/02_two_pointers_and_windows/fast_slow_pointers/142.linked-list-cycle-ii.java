@@ -43,5 +43,8 @@ class Solution {
         return null;
     }
 }
+
+// Time: O(n)
+// Space: O(1)
 // @lc code=end
 

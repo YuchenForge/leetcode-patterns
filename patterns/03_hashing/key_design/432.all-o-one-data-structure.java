@@ -137,5 +137,8 @@ class AllOne {
  * String param_3 = obj.getMaxKey();
  * String param_4 = obj.getMinKey();
  */
+
+// Time: O(1)
+// Space: O(n)
 // @lc code=end
 

@@ -23,5 +23,8 @@ class Solution {
         return false;
     }
 }
+
+// Time: O(n)
+// Space: O(n)
 // @lc code=end
 

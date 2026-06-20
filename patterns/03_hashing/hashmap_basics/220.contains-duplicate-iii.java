@@ -49,6 +49,9 @@ class Solution {
         
     }
 }
+
+// Time: O(n)
+// Space: O(k)
 // @lc code=end
 
 

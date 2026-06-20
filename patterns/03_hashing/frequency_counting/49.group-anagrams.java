@@ -30,5 +30,8 @@ class Solution {
 
     }
 }
+
+// Time: O(n * k log k)
+// Space: O(n * k)
 // @lc code=end
 

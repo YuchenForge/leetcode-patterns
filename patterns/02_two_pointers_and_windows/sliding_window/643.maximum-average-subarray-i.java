@@ -25,5 +25,8 @@ class Solution {
         return (double) max / k;
     }
 }
+
+// Time: O(n)
+// Space: O(1)
 // @lc code=end
 

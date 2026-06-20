@@ -71,6 +71,9 @@ class Solution {
 
     }
 }
+
+// Time: O(m + n)
+// Space: O(m + n)
 // @lc code=end
 
 // grow right until it's valid

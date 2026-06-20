@@ -29,5 +29,8 @@ class Solution {
         return maxArea;
     }
 }
+
+// Time: O(n)
+// Space: O(1)
 // @lc code=end
 

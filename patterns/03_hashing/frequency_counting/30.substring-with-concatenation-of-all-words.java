@@ -67,6 +67,9 @@ class Solution {
         return res;
     }
 }
+
+// Time: O(n * m)
+// Space: O(w)
 // @lc code=end
 
 // brute force solution (Time limit exceeded)
