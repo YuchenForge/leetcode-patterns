@@ -6,34 +6,39 @@
 - Build/modify tree recursively.
 
 ## Core Idea
-- Base: `if (node == null) return baseCase;`
-- Recurse: `left = dfs(node.left)`, `right = dfs(node.right);`
-- Combine at current node; sometimes pass parent info down.
+- Depth: Distance from root
+- Height: Distance to deepest leaf
+    - Height determines complexity
+    - Balanced Tree: O(log n)
+    - Skewed Tree: O(n)
+- Number of nodes per level: Level k <= 2^k
+- Total nodes in perfect binary tree: 2^(h+1) - 1
+- Leaves in perfect tree: 2^h
+- Full VS Complete VS Perfect
+    - Full Binary Tree: Every node has 0-2 children, levels do not have to be full
+    - Complete Binary Tree: lowest level can have 1 children, all levels filled from left to right
+    - Perfect Binary Tree: All internal nodes have 2 children, leaves at same level, all level filled
+- Diameter through node = leftHeight + rightHeight
+- Tree Construction:
+    - Preorder + Inorder: Preorder first element = root
+    - Postorder + Inorder: Postorder last element = root
+    - Inorder Alone: Cannot uniquely construct tree
+- LCA: if p,q on different sides of root, root is LCA; else recurse one side.
 
 ## Template
 ```java
-int height(TreeNode node) {
-    if (node == null) return 0;
-    return 1 + Math.max(height(node.left), height(node.right));
-}
+// Basic Recursion
+int dfs(TreeNode root) {
+    if (root == null)
+        return baseCase;
 
-TreeNode invert(TreeNode node) {
-    if (node == null) return null;
-    TreeNode L = invert(node.left);
-    TreeNode R = invert(node.right);
-    node.left = R;
-    node.right = L;
-    return node;
+    int left = dfs(root.left);
+    int right = dfs(root.right);
+
+    return combine(left, right);
 }
 ```
 
-## Common Variations
-| Return type | Example |
-|-------------|---------|
-| int (metric) | Depth, count, max |
-| boolean | Balanced, symmetric |
-| TreeNode | Construct, merge |
-| void + global | Collect all paths |
 
 ## Complexity
 | Variant | Time | Space |

@@ -8,7 +8,7 @@
 ## Core Idea
 - Invariant: left < node < right (strict or non-strict per problem).
 - Search: go left if target < node, else right.
-- Inorder traversal yields sorted sequence.
+- In-order traversal: Returns values in sorted order
 
 ## Template
 ```java
@@ -29,11 +29,11 @@ boolean isValidBST(TreeNode root, long min, long max) {
 }
 ```
 
-## Complexity
-| Variant | Time | Space |
-|---------|------|-------|
-| BST search | O(h) | O(1) |
-| Validate | O(n) | O(h) |
+## Time Complexity
+- Search O(log n)
+- Insert O(log n)
+- Delete O(log n)
+- Worst Case: All operations O(n) if tree becomes skewed (like a linked list)
 
 ## Related Patterns
 - Tree traversal — inorder

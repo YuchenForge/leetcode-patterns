@@ -91,21 +91,20 @@ return dummy.next;
 ## Template: Intersection (Common Nodes)
 
 ```java
-public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-    if (headA == null || headB == null) return null;
+if (headA == null || headB == null) return null;
     
-    ListNode pA = headA, pB = headB;
-    
-    // Two pointers traverse both lists
-    // If they intersect, they'll meet at intersection point
-    // If not, both will reach null together
-    while (pA != pB) {
-        pA = (pA == null) ? headB : pA.next;
-        pB = (pB == null) ? headA : pB.next;
-    }
-    
-    return pA;  // Either intersection node or null
+ListNode pA = headA, pB = headB;
+
+// Two pointers traverse both lists
+// If they intersect, they'll meet at intersection point
+// If not, both will reach null together
+while (pA != pB) {
+    pA = (pA == null) ? headB : pA.next;
+    pB = (pB == null) ? headA : pB.next;
 }
+
+return pA;  // Either intersection node or null
+
 ```
 
 ## Complexity

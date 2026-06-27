@@ -1,3 +1,5 @@
+
+
 /*
  * @lc app=leetcode id=25 lang=java
  *
@@ -17,8 +19,49 @@
  */
 class Solution {
     public ListNode reverseKGroup(ListNode head, int k) {
+        ListNode dummy = new ListNode(0);
+        dummy.next = head;
+
+        ListNode prev = dummy;
+
+        while (hasKNodes(head, k)) {
+            ListNode oldTail = head;
+            ListNode newHead = reverseK(head, k);
+            prev.next = newHead;
+            prev = oldTail;
+            head = oldTail.next;
+        }
+
+        return dummy.next;
+    }
+
+    private ListNode reverseK(ListNode head, int k) {
+        ListNode prev = null;
+        ListNode curr = head;
         
+        for (int i = 0; i < k; i++) {
+            ListNode next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+        }
+
+        head.next = curr;
+        return prev;
+    }
+
+    private boolean hasKNodes(ListNode head, int k) {
+        ListNode curr = head;
+        for (int i = 0; i < k; i++) {
+            if (curr == null) {
+                return false;
+            }
+            curr = curr.next;
+        }
+        return true;
     }
 }
 // @lc code=end
 
+// Time: O(n)
+// Space: O(1)

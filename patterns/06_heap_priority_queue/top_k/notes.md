@@ -88,7 +88,7 @@ pq.offer(new int[]{3, 100});
 pq.offer(new int[]{1, 200});
 pq.peek(); // {1, 200} — smallest first element on top
 ```
- 
+
 ### K Largest — Min-Heap of Size K
  
 ```java
