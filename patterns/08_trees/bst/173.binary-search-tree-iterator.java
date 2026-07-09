@@ -32,7 +32,7 @@ class BSTIterator {
         pushLeft(root);
     }
     
-    // O(1) time and O(h) space
+    // O(1) time (O(h) worst time complexity) and O(h) space
     public int next() {
         TreeNode next = stack.pop();
 

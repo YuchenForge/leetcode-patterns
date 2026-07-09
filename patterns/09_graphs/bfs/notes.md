@@ -1,38 +1,71 @@
 # Pattern: BFS
 
 ## When to Use
-- **Shortest path** in unweighted graph/grid (fewest steps/edges).
-- **Level-by-level** expansion (word ladder, rotten oranges).
-- When state space is small and you need minimum moves.
+- Shortest path — Finding shortest distance in unweighted graphs (mazes, social networks)
+- Level-order traversal — Processing tree/graph by levels
+- Connected components — Same as DFS but with queue instead
+- 0/1 Matrix — Finding distance to nearest 0 in binary matrix
+- Word ladder — Fewest steps to transform one word to another
 
 ## Core Idea
 - Queue + visited set; distance = number of dequeue layers (or store in queue).
 - Grid: 4/8 directions; mark visited on **enqueue**.
 - Multi-source: push all sources first with distance 0.
+- Time: O(V + E), Space: O(V) for queue
+
+## Steps
+1. Start at a node, add it to queue
+2. Dequeue the front node, mark as visited
+3. Enqueue all unvisited neighbors
+4. Repeat until queue is empty
 
 ## Template
 ```java
-int bfs(int start, Map<Integer, List<Integer>> graph) {
-    Queue<Integer> q = new ArrayDeque<>();
-    Set<Integer> seen = new HashSet<>();
-    q.offer(start);
-    seen.add(start);
-    int dist = 0;
-    while (!q.isEmpty()) {
-        int sz = q.size();
-        for (int i = 0; i < sz; i++) {
-            int u = q.poll();
-            if (u == target) return dist;
-            for (int v : graph.getOrDefault(u, List.of())) {
-                if (!seen.contains(v)) {
-                    seen.add(v);
-                    q.offer(v);
-                }
+// Same as dfs but use queue
+void bfs(int startVertex) {
+    boolean[] visited = new boolean[vertices];
+    Queue<Integer> queue = new LinkedList<>(); 
+    
+    queue.add(startVertex);         
+    visited[startVertex] = true;
+    
+    while (!queue.isEmpty()) {
+        int vertex = queue.poll();          
+        System.out.print(vertex + " ");
+        
+        for (int adjacent : adjacencyList[vertex]) {
+            if (!visited[adjacent]) {
+                queue.add(adjacent); 
+                visited[adjacent] = true;
             }
         }
-        dist++;
     }
-    return -1;
+}
+```
+
+```java
+int shortestPath(int start, int end, boolean[] visited) {
+    Queue<int[]> queue = new LinkedList<>();  // [node, distance]
+    queue.add(new int[]{start, 0});
+    visited[start] = true;
+    
+    while (!queue.isEmpty()) {
+        int[] current = queue.poll();
+        int node = current[0];
+        int dist = current[1];
+        
+        if (node == end) {
+            return dist;
+        }
+        
+        for (int neighbor : graph[node]) {
+            if (!visited[neighbor]) {
+                visited[neighbor] = true;
+                queue.add(new int[]{neighbor, dist + 1});
+            }
+        }
+    }
+    return -1;  // No path found
 }
 ```
 
