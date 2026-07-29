@@ -6,7 +6,7 @@
 - Dependency resolution, course schedule, task schedling with dependencies
 
 ## Core Idea
-- Topological sort orders vertices in a directed acyclic graph (DAG) so that for every edge:
+- Topological sort orders vertices in a directed acyclic graph (DAG) (have directions, no cycle) so that for every edge:
 u -> v, u comes before v
 - **Kahn (BFS)**: in-degree 0 queue, reduce neighbors, if not all processed → cycle.
 - **DFS postorder**: push node after visiting deps; reverse for order.
@@ -24,7 +24,7 @@ List<Integer> topologicalSort(int n, List<List<Integer>> graph) {
     List<Integer> result = new ArrayList<>();
     Queue<Integer> queue = new LinkedList<>();
     
-    // Calculate in-degrees
+    // Calculate in-degrees (number of incoming edges)
     for (int i = 0; i < n; i++) {
         for (int neighbor : graph[i]) {
             inDegree[neighbor]++;
@@ -51,7 +51,8 @@ List<Integer> topologicalSort(int n, List<List<Integer>> graph) {
         }
     }
     
-    return result.size() == n ? result : new ArrayList<>();  // Empty if cycle exists
+    // Empty if cycle exists
+    return result.size() == n ? result : new ArrayList<>();  
 }
 ```
 

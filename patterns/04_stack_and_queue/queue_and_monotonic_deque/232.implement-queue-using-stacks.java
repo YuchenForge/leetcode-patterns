@@ -9,8 +9,8 @@ import java.util.*;
 // @lc code=start
 class MyQueue {
 
-    private Deque<Integer> stackIn = new ArrayDeque<>();
-    private Deque<Integer> stackOut = new ArrayDeque<>();
+    private final Deque<Integer> stackIn = new ArrayDeque<>();
+    private final Deque<Integer> stackOut = new ArrayDeque<>();
 
 
     public MyQueue() {
