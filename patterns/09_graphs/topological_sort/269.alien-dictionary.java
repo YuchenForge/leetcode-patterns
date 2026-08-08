@@ -61,8 +61,80 @@ words[i] consists of only lowercase English letters.
 
 */
 
+import java.util.*;
+
 class Solution {
     public String foreignDictionary(String[] words) {
-      
+        // Build graph
+        List<List<Character>> graph = new ArrayList<>();
+
+        for (int i = 0; i < 26; i++) {
+            graph.add(new ArrayList<>());
+        }
+
+        int[] indegree = new int[26];
+
+        for (int i = 0; i < words.length - 1; i++) {
+            String firstWord = words[i];
+            String secondWord = words[i+1];
+
+            char[] chars1 = firstWord.toCharArray();
+            char[] chars2 = secondWord.toCharArray();
+
+            int minLen = Math.min(chars1.length, chars2.length);
+            boolean foundDiff = false;
+            for (int j = 0; j < minLen; j++) {
+                if (chars1[j] != chars2[j]) {
+                    char pre = chars1[j];
+                    char c = chars2[j];
+                    if (!graph.get(pre - 'a').contains(c)) {
+                        graph.get(pre - 'a').add(c);
+                        indegree[c - 'a']++;
+                    }
+                    foundDiff = true;
+                    break;
+                }
+            }
+            if (!foundDiff && chars1.length > chars2.length) {
+                return ""; // invalid prefix order
+            }
+        }
+
+        HashSet<Character> uniqueLetters = new HashSet<>();
+        for (String w : words) {
+            for (char c : w.toCharArray()) {
+                uniqueLetters.add(c);
+            }
+        }
+
+        Deque<Character> queue = new ArrayDeque<>();
+        for (char c : uniqueLetters) {
+            if (indegree[c - 'a'] == 0) {
+                queue.offer(c);
+            }
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        while (!queue.isEmpty()) {
+            char cur = queue.poll();
+            result.append(cur);
+
+            for (char next: graph.get(cur - 'a')) {
+                indegree[next - 'a']--;
+                if (indegree[next - 'a'] == 0) {
+                    queue.offer(next);
+                }
+            }
+        }
+
+        if (result.length() != uniqueLetters.size()) {
+            return ""; // cycle detected 
+        }
+
+        return result.toString();
     }
 }
+
+
+

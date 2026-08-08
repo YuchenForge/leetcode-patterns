@@ -12,13 +12,13 @@
 
 ## Template
 ```java
-void backtrack(int[] nums, int start, List<Integer> path, List<List<Integer>> res) {
-    res.add(new ArrayList<>(path));
-    for (int i = start; i < nums.length; i++) {
-        if (i > start && nums[i] == nums[i-1]) continue; // duplicates
-        path.add(nums[i]);
-        backtrack(nums, i + 1, path, res);
-        path.remove(path.size() - 1);
+void backtrack(int start, int[] nums, List<Integer> path, List<List<Integer>> results) {
+    results.add(new ArrayList<>(path));            // record at EVERY node, not just leaves
+
+    for (int i = start; i < nums.length; i++) {     // loop starts at `start`, not 0
+        path.add(nums[i]);                          // choose
+        backtrack(i + 1, nums, path, results);       // explore, only look forward
+        path.remove(path.size() - 1);                // un-choose
     }
 }
 ```
