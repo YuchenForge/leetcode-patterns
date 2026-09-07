@@ -10,6 +10,11 @@
 - Insert: add interval, merge in one pass after sort.
 - Minimum arrows/points: sort by end, greedy keep one point per group.
 
+1. Sort the intervals by their start time.
+2. Iterate through the sorted intervals:
+    a. If the current interval overlaps with the last merged interval, merge them by updating the end time.
+    b. Otherwise, add the current interval as a new interval.
+
 ## Template
 ```java
 Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
